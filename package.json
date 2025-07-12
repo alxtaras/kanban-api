@@ -8,5 +8,8 @@
   "keywords": [],
   "author": "Alexander Tarasenko",
   "license": "ISC",
-  "description": "My first web app."
+  "description": "My first web app.",
+  "dependencies": {
+    "dotenv": "^17.2.0"
+  }
 }
