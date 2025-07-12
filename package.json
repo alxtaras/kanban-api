@@ -10,6 +10,7 @@
   "license": "ISC",
   "description": "My first web app.",
   "dependencies": {
-    "dotenv": "^17.2.0"
+    "dotenv": "^17.2.0",
+    "express": "^5.1.0"
   }
 }
