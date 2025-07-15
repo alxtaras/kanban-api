@@ -5,6 +5,7 @@ const express = require('express');
 const app = express();
 // Берём порт из .env, или используем 5000 по умолчанию
 const PORT = process.env.PORT || 5000;
+
 // Подключаем middleware для чтения JSON
 app.use(express.json());
 //Импорт маршрутов tasks
@@ -28,4 +29,5 @@ app.get('/hello', (req, res) => {
 // Запуск сервера
 app.listen(PORT, () => {
     console.log(`🚀Server work: http://localhost:${PORT}`);
+    console.log('PORT from .env: ', process.env.PORT);
   });
