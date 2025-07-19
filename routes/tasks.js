@@ -46,5 +46,28 @@ router.delete('/:id', (req,res) => {
     const deletedTask = tasks.splice(index, 1)[0];
     res.status(200).json({ message: `Task with id: ${deletedTask.id}, title: ${deletedTask.title} deleted!` });
 });
+//Update - PATCH
+router.patch('/:id', (req,res) => {
+    const { id } = req.params;
+    const { title } = req.body;
+    const index = tasks.findIndex(task => task.id == id);
+
+    if (!title) {
+        return res.status(400).json({
+            message: '[Error] - Title is empty!'
+        });
+    }
+
+    if (index === -1) {
+        return res.status(404).json({
+            message: '[Error] - ID doesn`t exist!'
+        });
+    }
+    tasks[index].title = title;
+    return res.status(200).json({
+        message: `Task id: ${id} change title to ${title}`
+    });
+
+});
 
 module.exports = router;
