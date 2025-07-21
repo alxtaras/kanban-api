@@ -39,6 +39,7 @@ kanban-api/
 ├── .env
 ├── index.js          # основной сервер
 ├── routes/
+│   └── hello.js      # first step in js
 │   └── tasks.js      # роуты CRUD
 ├── package.json
 └── README.md         # этот файл
