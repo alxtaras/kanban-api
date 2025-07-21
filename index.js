@@ -9,23 +9,16 @@ const PORT = process.env.PORT || 5000;
 // Подключаем middleware для чтения JSON
 app.use(express.json());
 //Импорт маршрутов tasks
-const taskRoutes = require('./routes/tasks')
-
+const taskRoutes = require('./routes/tasks');
+const helloRoutes = require('./routes/hello');
 app.use('/tasks', taskRoutes);
+app.use('/hello', helloRoutes);
 
 // Маршрут по умолчанию - корневой маршрут
 app.get('/', (req, res) => {
     res.send('Server work! 👋 It`s simple kanban');
   });
-// post запрос
-app.post('/hello', (req, res) => {
-  const { name } = req.body;
-  res.send(`Hi, ${name}!`);
-});
 
-app.get('/hello', (req, res) => {
-    res.send(`Hello!`);
-  });
 // Запуск сервера
 app.listen(PORT, () => {
     console.log(`🚀Server work: http://localhost:${PORT}`);
