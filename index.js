@@ -11,8 +11,10 @@ app.use(express.json());
 //Импорт маршрутов tasks
 const taskRoutes = require('./routes/tasks');
 const helloRoutes = require('./routes/hello');
+const columnsRoutes = require('./routes/columns');
 app.use('/tasks', taskRoutes);
 app.use('/hello', helloRoutes);
+app.use('/columns', columnsRoutes);
 
 // Маршрут по умолчанию - корневой маршрут
 app.get('/', (req, res) => {
