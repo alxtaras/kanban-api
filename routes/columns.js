@@ -36,4 +36,24 @@ router.post('/', (req, res) => {
     })
 });
 
+//Delete - DELETE
+router.delete('/:id', (req, res) => {
+    const { id } = req.params;
+    if (!id){
+        return res.status(400).json({
+            message: 'Error - id is empty.'
+        })
+    }
+    const index = columns.findIndex(column => column.id == id);
+    if (index === -1) {
+        return res.status(404).json({
+            message : 'ID doesn`t exist.'
+        })
+    }
+    const deleteColumn = columns.splice(index, 1)[0];
+    res.status(200).json({
+        message : `Column with id: ${deleteColumn.id} and title ${deleteColumn.title}` 
+    });
+});
+
 module.exports = router;
