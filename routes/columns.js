@@ -55,5 +55,30 @@ router.delete('/:id', (req, res) => {
         message : `Column with id: ${deleteColumn.id} and title ${deleteColumn.title}` 
     });
 });
+//Update - PATCH
+router.patch('/:id', (req, res) => {
+    const { id } = req.params;
+    const { title } = req.body;
+    const index = columns.findIndex( column => column.id == id)
+    if (!id) {
+        return res.status(400).json({
+            message : 'id is empty!'
+        })
+    }
+    if (!title) {
+        return res.status(400).json({
+            message : 'title is empty!'
+        })
+    }
+    if (index === -1) {
+        return res.status(404).json({
+            message : 'ID doen`t exist.'
+        })
+    }
+    columns[index].title = title
+    res.status(200).json({
+        message: 'Title changed!'
+    })
+});
 
 module.exports = router;
